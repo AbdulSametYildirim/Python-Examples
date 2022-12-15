@@ -1,4 +1,12 @@
+import math
+
+
 def countUniqeInArray(array):
+  # It returns 3 parameters.
+  # #The first is the number of elements in the array,
+  # the second is how many different elements there are,
+  # and the third is how many times each element repeats.
+
   count = 0
   element=""
   farkli = 1
@@ -26,9 +34,8 @@ def countUniqeInArray(array):
         myRealArray.append([keys[i], farkli])
         toplamFarkli = toplamFarkli + 1
         farkli = 1
-  print(myRealArray)
-  print(toplamFarkli)
-  print(len(keys))
+  return len(keys),toplamFarkli,myRealArray
+
 
 
   #print(keys)
@@ -66,7 +73,19 @@ class IG:
     for i in reversed(range(1,len(self.array))):
       print(self.array[i][-1])
     """
-    countUniqeInArray(self.array)
+    asyEntropy = countUniqeInArray(self.array)
+
+    totalVariable1 = asyEntropy[0]
+    toplamFarkli1 =  asyEntropy[1]
+    myRealArray1 = asyEntropy[2]
+    Hs=0
+    for i in range(0,toplamFarkli1):
+      localVariable= myRealArray1[i][1] / totalVariable1
+      localLog = math.log(2, localVariable)
+      Hs= (-(localVariable) * localLog) + Hs
+      
+
+    print(Hs)
 
 
 
